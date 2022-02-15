@@ -1,0 +1,21 @@
+# T3Pio Pipeline
+
+T3Pio is an amplicon generation pipeline built for designing direct from stool amplicon sets for HMAS schemes
+
+
+## Requirements
+
+1. Python 3 or higher. Download python [here](https://www.python.org/downloads/).
+2. Orthofinder 2.1.2 or higher. Download orthofinder [here](https://github.com/davidemms/OrthoFinder).
+3. TrimAl 1.2 or higher. Download orthofinder [here](https://github.com/inab/trimal).
+4. EMOBSS 6.4.0 or higher. Download emboss [here](ftp://emboss.open-bio.org/pub/EMBOSS/).
+5. Primer3 2.3.4 or higher. Download primer3 [here](https://github.com/primer3-org/primer3/releases).
+6. MUSCLE 3.6 or higher. Download muscle [here](https://drive5.com/muscle/downloads_v3.htm).
+
+## Install
+
+1. Copy the Github repository to a folder  
+`git clone https://github.com/Code_Repository/T3Pio_Main.git`
+
+
+
