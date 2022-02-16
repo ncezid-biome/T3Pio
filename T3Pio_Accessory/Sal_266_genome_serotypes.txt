@@ -1,0 +1,275 @@
+Genome	Serotype_code	Serotype
+02-0341-M3235-15-037	TEA	Salmonella Miami
+2009K-1733-M347-15-032	JEG	Salmonella Enteritidis
+2010K-0038-M3235-15-041	TEA	Salmonella Miami
+2011K-0646-M347-15-049	JAB	Salmonella Agona
+2011K-0688-M347-15-049	JAB	Salmonella Agona
+2011K-1785-M347-14-021	JIX	Salmonella Montevideo
+2012K-0300-M3235-15-030	JIP	Salmonella Mississippi
+2012K-1373-M947-15-031	JL6	Salmonella Poona
+2012K-1528-M347-15-025	JBP	Salmonella Braenderup
+2012K-1663-M3235-15-035	JIP	Salmonella Mississippi
+2013K-0117-M347-14-002-Jan15	JGG	Salmonella Javiana
+2013K-0251-M3235-15-019	TDR	Salmonella Mbandaka
+2013K-0479-M3235-15-041	JL6	Salmonella Poona
+2013K-0504-M3235-15-019	TDR	Salmonella Mbandaka
+2013K-0742-M347-15-025	JBP	Salmonella Braenderup
+2013K-1023-M347-13-004	JJP	Salmonella Newport
+2013K-1040-M947-013-024	JF6	Salmonella Heidelberg
+2013K-1151-M347-15-032	JJ6	Salmonella Muenchen
+2013K-1775-M3235-15-041	JFX	Salmonella Infantis
+2013K-1796-M347-13-023-Dec23	JN6	Salmonella Saintpaul
+2014K-0386-M347-14-030	JFX	Salmonella Infantis
+2014K-0468-M347-14-059	JJP	Salmonella Newport
+2014K-0817-M3235-14-003	JPP	Salmonella Typhi
+2014K-0889-M347-14-064	JM6	Salmonella Schwarzengrund
+2014K-0950-M347-14-064	JEG	Salmonella Enteritidis
+2014K-0967-M3235-14-010	JIX	Salmonella Montevideo
+2015AM-0040-M3235-15-017	JPP	Salmonella Typhi
+2015K-0176-M3235-15-017	JGP	Salmonella Kentucky
+2015K-0177-M3235-15-017	JAG	Salmonella Anatum
+2015K-0178-M3235-15-017	JF6	Salmonella Heidelberg
+2015K-0179-M347-15-018	JGP	Salmonella Kentucky
+2015K-0180-M3235-15-017	JGP	Salmonella Kentucky
+2015K-0181-M3235-15-019	TDR	Salmonella Mbandaka
+2015K-0183-M3235-15-017	JDX	Salmonella Dublin
+2015K-0184-M3235-15-017	JGG	Salmonella Javiana
+2015K-0185-M3235-15-017	JGG	Salmonella Javiana
+2015K-0188-M3235-15-019	JGG	Salmonella Javiana
+2015K-0189-M3235-15-019	JGG	Salmonella Javiana
+2015K-0190-M347-15-025	JGG	Salmonella Javiana
+2015K-0191-M347-15-018	JAX	Salmonella Berta
+2015K-0192-M347-15-018	JAG	Salmonella Anatum
+2015K-0193-M347-15-018	JAP	Salmonella Bareilly
+2015K-0194-M347-15-025	JAG	Salmonella Anatum
+2015K-0219-M3235-15-019	JDX	Salmonella Dublin
+2015K-0220-M347-15-024	JAG	Salmonella Anatum
+2015K-0222-M3235-15-019	JDX	Salmonella Dublin
+2015K-0227-M347-15-018	JAB	Salmonella Agona
+2015K-0228-M347-15-018	JAX	Salmonella Berta
+2015K-0229-M347-15-025	JGG	Salmonella Javiana
+2015K-0315-M347-15-026	JEG	Salmonella Enteritidis
+2015K-0435-M947-15-020	JEG	Salmonella Enteritidis
+2015K-0682-M347-15-035	JIX	Salmonella Montevideo
+2015K-0683-M347-15-035	JIX	Salmonella Montevideo
+2015K-0684-M3235-15-040	JJP	Salmonella Newport
+2015K-0685-M3235-15-040	JJ6	Salmonella Muenchen
+2015K-0701-M3235-15-037	JIP	Salmonella Mississippi
+2015K-0702-M3235-15-040	JIP	Salmonella Mississippi
+2015K-0704-M3235-15-040	JIX	Salmonella Montevideo
+2015K-0706-M3235-15-037	JIP	Salmonella Mississippi
+2015K-0708-M347-15-035	JIX	Salmonella Montevideo
+2015K-0715-M3235-15-040	JJX	Salmonella Oranienburg
+2015K-0716-M3235-15-040	JJ6	Salmonella Muenchen
+2015K-0717-M3235-15-040	JJP	Salmonella Newport
+2015K-0804-M3235-15-041	JPP	Salmonella Typhi
+FDA00009409	JL6	Salmonella Poona
+PNUSAS000559	JJX	Salmonella Oranienburg
+PNUSAS000560	JJX	Salmonella Oranienburg
+PNUSAS000562	JL6	Salmonella Poona
+PNUSAS000563	JL6	Salmonella Poona
+PNUSAS000564	JN6	Salmonella Saintpaul
+PNUSAS000565	JMP	Salmonella Senftenberg
+PNUSAS000566	JMP	Salmonella Senftenberg
+PNUSAS000567	JMP	Salmonella Senftenberg
+PNUSAS000568	JP6	Salmonella Thompson
+PNUSAS000569	JP6	Salmonella Thompson
+PNUSAS000570	JP6	Salmonella Thompson
+PNUSAS000571	JP6	Salmonella Thompson
+Sal_ABO_14	ABO	Salmonella Abony
+Sal_COT_2014K-0192	COT	Salmonella Cotham
+Sal_JAB_24249	JAB	Salmonella Agona
+Sal_JAB_460004_2-1	JAB	Salmonella Agona
+Sal_JAB_ATCC-51957	JAB	Salmonella Agona
+Sal_JAB_SL483	JAB	Salmonella Agona
+Sal_JAG_06-0532	JAG	Salmonella Anatum
+Sal_JAG_ATCC-BAA-1592	JAG	Salmonella Anatum
+Sal_JAG_CFSAN012484	JAG	Salmonella Anatum
+Sal_JAP_06-0784	JAP	Salmonella Bareilly
+Sal_JAP_07-0873	JAP	Salmonella Bareilly
+Sal_JAP_2013K-1298	JAP	Salmonella Bareilly
+Sal_JAP_2015K-0187	JAP	Salmonella Bareilly
+Sal_JAP_CFSAN000189	JAP	Salmonella Bareilly
+Sal_JAX_2012K-0684	JAX	Salmonella Berta
+Sal_JAX_ATCC-8392	JAX	Salmonella Berta
+Sal_JBG_2012K-0840	JBG	Salmonella Blockley
+Sal_JBP_2011K-0222	JBP	Salmonella Braenderup
+Sal_JBP_2013K-1020	JBP	Salmonella Braenderup
+Sal_JBP_ATCC-BAA-664	JBP	Salmonella Braenderup
+Sal_JBX_2012K-1361	JBX	Salmonella Bredeney
+Sal_JBX_CFSAN001080	JBX	Salmonella Bredeney
+Sal_JCG_2015K-0034	JCG	Salmonella Cerro
+Sal_JD6_SC-B67	JD6	Salmonella Choleraesuis
+Sal_JDG_CFSAN002050	JDG	Salmonella Cubana
+Sal_JDP_2015K-0409	JDP	Salmonella Derby
+Sal_JDX_2015K-0282	JDX	Salmonella Dublin
+Sal_JDX_CT-02021853	JDX	Salmonella Dublin
+Sal_JEG	JEG	Salmonella Enteritidis
+Sal_JEG_18569	JEG	Salmonella Enteritidis
+Sal_JEG_642044-8-1	JEG	Salmonella Enteritidis
+Sal_JEG_77-1427	JEG	Salmonella Enteritidis
+Sal_JEG_CDC_2010K-0968	JEG	Salmonella Enteritidis
+Sal_JEG_EC20110353	JEG	Salmonella Enteritidis
+Sal_JEG_EC20110354	JEG	Salmonella Enteritidis
+Sal_JEG_EC20110356	JEG	Salmonella Enteritidis
+Sal_JEG_EC20110358	JEG	Salmonella Enteritidis
+Sal_JEG_EC20120005	JEG	Salmonella Enteritidis
+Sal_JEG_EC20120008	JEG	Salmonella Enteritidis
+Sal_JEG_EC20120929	JEG	Salmonella Enteritidis
+Sal_JEG_EC20121176	JEG	Salmonella Enteritidis
+Sal_JEG_EC20121179	JEG	Salmonella Enteritidis
+Sal_JEG_EC20121180	JEG	Salmonella Enteritidis
+Sal_JEG_OLF-SE4-0317-8	JEG	Salmonella Enteritidis
+Sal_JEG_OLF-SE9-10012	JEG	Salmonella Enteritidis
+Sal_JEG_P125109	JEG	Salmonella Enteritidis
+Sal_JEG_SEJ	JEG	Salmonella Enteritidis
+Sal_JF6_41578	JF6	Salmonella Heidelberg
+Sal_JF6_B182	JF6	Salmonella Heidelberg
+Sal_JF6_CFSAN002064	JF6	Salmonella Heidelberg
+Sal_JF6_CFSAN002069	JF6	Salmonella Heidelberg
+Sal_JF6_SL476	JF6	Salmonella Heidelberg
+Sal_JFX_2010K-2370	JFX	Salmonella Infantis
+Sal_JFX_CFSAN003307	JFX	Salmonella Infantis
+Sal_JGG_2010K-1649	JGG	Salmonella Javiana
+Sal_JGG_CFSAN001992	JGG	Salmonella Javiana
+Sal_JGG_CFSAN002234	JGG	Salmonella Javiana
+Sal_JGP_2015K-0221	JGP	Salmonella Kentucky
+Sal_JGP_2015K-0230	JGP	Salmonella Kentucky
+Sal_JGP_29439	JGP	Salmonella Kentucky
+Sal_JGX_2012K-1634	JGX	Salmonella Litchfield
+Sal_JHA_2012K-1778	JHA	Salmonella Hartford
+Sal_JHA_2015K-0520	JHA	Salmonella Hartford
+Sal_JHP_2011K-1631	JHP	Salmonella Manhattan
+Sal_JIG_CFSAN017963	JIG	Salmonella Minnesota
+Sal_JIP_2883_H	JIP	Salmonella Mississippi
+Sal_JIX_2009K-1792	JIX	Salmonella Montevideo
+Sal_JIX_2015K-0705	JIX	Salmonella Montevideo
+Sal_JIX_507440-20	JIX	Salmonella Montevideo
+Sal_JJ6_08-1125	JJ6	Salmonella Muenchen
+Sal_JJ6_2013K-1246	JJ6	Salmonella Muenchen
+Sal_JJ6_baa1594	JJ6	Salmonella Muenchen
+Sal_JJP_36805	JJP	Salmonella Newport
+Sal_JJP_CFSAN001655	JJP	Salmonella Newport
+Sal_JJP_CFSAN001889	JJP	Salmonella Newport
+Sal_JJP_CFSAN003352	JJP	Salmonella Newport
+Sal_JJP_CVM_21538	JJP	Salmonella Newport
+Sal_JJP_CVM_21550	JJP	Salmonella Newport
+Sal_JJP_CVM_21554	JJP	Salmonella Newport
+Sal_JJP_CVM_22425	JJP	Salmonella Newport
+Sal_JJP_CVM_22462	JJP	Salmonella Newport
+Sal_JJP_CVM_22513	JJP	Salmonella Newport
+Sal_JJP_CVM_N1543	JJP	Salmonella Newport
+Sal_JJP_CVM_N18486	JJP	Salmonella Newport
+Sal_JJP_JY-220A-RVX	JJP	Salmonella Newport
+Sal_JJP_MOD1_SALC_102	JJP	Salmonella Newport
+Sal_JJP_MOD1_SALC_127	JJP	Salmonella Newport
+Sal_JJP_MOD1_SalC_14	JJP	Salmonella Newport
+Sal_JJP_Sal_155	JJP	Salmonella Newport
+Sal_JJP_SL254	JJP	Salmonella Newport
+Sal_JJP_USMARC-S3124-1	JJP	Salmonella Newport
+Sal_JJX_2013K-1153	JJX	Salmonella Oranienburg
+Sal_JJX_250	JJX	Salmonella Oranienburg
+Sal_JKG_2015K-0175	JKG	Salmonella Panama
+Sal_JKP_AKU-12601	JKP	Salmonella Paratyphi A
+Sal_JKP_ATCC-9150	JKP	Salmonella Paratyphi A
+Sal_JKP_CMCC-50503	JKP	Salmonella Paratyphi A
+Sal_JKP_CMCC-50973	JKP	Salmonella Paratyphi A
+Sal_JKX_2015K-0074	JKX	Salmonella Paratyphi B
+Sal_JKX_2015K-0083	JKX	Salmonella Paratyphi B
+Sal_JKX_2015K-0109	JKX	Salmonella Paratyphi B
+Sal_JKX_SARA56	JKX	Salmonella Paratyphi B
+Sal_JKX_SPB7	JKX	Salmonella Paratyphi B
+Sal_JL6_2012K-0631	JL6	Salmonella Poona
+Sal_JL6_ATCC_BAA-1673	JL6	Salmonella Poona
+Sal_JLG_2013K-0886	JLG	Salmonella Reading
+Sal_JLP_2014K-0210	JLP	Salmonella Rubislaw
+Sal_JLX_2012K-1379	JLX	Salmonella Sandiego
+Sal_JM6_2012K-1484	JM6	Salmonella Schwarzengrund
+Sal_JM6_2015K-0700	JM6	Salmonella Schwarzengrund
+Sal_JM6_CVM19633	JM6	Salmonella Schwarzengrund
+Sal_JMP_2013K-0731	JMP	Salmonella Senftenberg
+Sal_JMP_2015K-0723	JMP	Salmonella Senftenberg
+Sal_JN6_08-0810	JN6	Salmonella Saintpaul
+Sal_JN6_2009K-0668	JN6	Salmonella Saintpaul
+Sal_JN6_CDC_2013K-0456	JN6	Salmonella Saintpaul
+Sal_JN6_CDC_2013K-0457	JN6	Salmonella Saintpaul
+Sal_JN6_CDC_2013K-0458	JN6	Salmonella Saintpaul
+Sal_JNG_ATCC_7308	JNG	Salmonella Stanley
+Sal_JNX_TXSC_TXSC08-19	JNX	Salmonella Tennessee
+Sal_JP6_2012K-1296	JP6	Salmonella Thompson
+Sal_JP6_2012K-1439	JP6	Salmonella Thompson
+Sal_JP6_2013K-0463	JP6	Salmonella Thompson
+Sal_JP6_ATCC_8391	JP6	Salmonella Thompson
+Sal_JP6_RM6836	JP6	Salmonella Thompson
+Sal_JPP_CT18	JPP	Salmonella Typhi
+Sal_JPP_P-stx-12	JPP	Salmonella Typhi
+Sal_JPP_Ty2	JPP	Salmonella Typhi
+Sal_JPP_Ty21a	JPP	Salmonella Typhi
+Sal_JPX_08-1736	JPX	"Salmonella subspecies I 4,[5],12:i:-"
+Sal_JPX_138736	JPX	"Salmonella subspecies I 4,[5],12:i:-"
+Sal_JPX_14028S	JPX	"Salmonella subspecies I 4,[5],12:i:-"
+Sal_JPX_2011K-0052	JPX	"Salmonella subspecies I 4,[5],12:i:-"
+Sal_JPX_2013K-0676	JPX	"Salmonella subspecies I 4,[5],12:i:-"
+Sal_JPX_798	JPX	"Salmonella subspecies I 4,[5],12:i:-"
+Sal_JPX_ATCC-13311	JPX	"Salmonella subspecies I 4,[5],12:i:-"
+Sal_JPX_CFSAN001921	JPX	"Salmonella subspecies I 4,[5],12:i:-"
+Sal_JPX_D23580	JPX	"Salmonella subspecies I 4,[5],12:i:-"
+Sal_JPX_DT104	JPX	"Salmonella subspecies I 4,[5],12:i:-"
+Sal_JPX_DT2	JPX	"Salmonella subspecies I 4,[5],12:i:-"
+Sal_JPX_L-3553	JPX	"Salmonella subspecies I 4,[5],12:i:-"
+Sal_JPX_LT2	JPX	"Salmonella subspecies I 4,[5],12:i:-"
+Sal_JPX_SL1344	JPX	"Salmonella subspecies I 4,[5],12:i:-"
+Sal_JPX_ST4-74	JPX	"Salmonella subspecies I 4,[5],12:i:-"
+Sal_JPX_T000240	JPX	"Salmonella subspecies I 4,[5],12:i:-"
+Sal_JPX_U288	JPX	"Salmonella subspecies I 4,[5],12:i:-"
+Sal_JPX_UK-1	JPX	"Salmonella subspecies I 4,[5],12:i:-"
+Sal_JPX_VNP20009	JPX	"Salmonella subspecies I 4,[5],12:i:-"
+Sal_JQP_2014K_0912	JQP	Salmonella Weltevreden
+Sal_JR2_00-0163	JR2	Salmonella subspecies II
+Sal_JR3_62-z36_RKS2983	JR3	Salmonella subspecies IIIa
+Sal_JR3_62-z4-z23_RSK2980	JR3	Salmonella subspecies IIIa
+Sal_JR5_NCTC-12419	JR5	Salmonella bongori (formerly subspecies V)
+Sal_JR5_Sbon_N268-08	JR5	Salmonella bongori (formerly subspecies V)
+Sal_JR6_1121	JR6	Salmonella subspecies VI
+Sal_JRA_287-91	JRA	Salmonella Gallinarum
+Sal_JRA_CDC1983-67	JRA	Salmonella Gallinarum
+Sal_JRA_RKS5078	JRA	Salmonella Gallinarum
+Sal_JRA_S06004	JRA	Salmonella Gallinarum
+Sal_JRE_ATCC-35640	JRE	Salmonella Abaetetuba
+Sal_JRP_2013K-1600	JRP	Salmonella Lomalinda
+Sal_PAR_RKS4594	PAR	Salmonella Paratyphi C
+Sal_POM_2012K-0678	POM	Salmonella Pomona
+Sal_RN5_01-0170	RN5	"Salmonella subspecies IIIb 60:r:e,n,x,z15"
+Sal_TDA_2013K-1747	TDA	Salmonella Adelaide
+Sal_TDF_2013K-0459	TDF	Salmonella Bovismorbificans
+Sal_TDF_3114	TDF	Salmonella Bovismorbificans
+Sal_TDF_Sal-610	TDF	Salmonella Bovismorbificans
+Sal_TDH_2012K-0845	TDH	Salmonella Flint
+Sal_TDJ_ATCC_BAA-711	TDJ	Salmonella Gaminara
+Sal_TDK_ATCC_51956	TDK	Salmonella Hadar
+Sal_TDR_2009K-0807	TDR	Salmonella Mbandaka
+Sal_TDR_2012K-1655	TDR	Salmonella Mbandaka
+Sal_TDS_2014K-0002	TDS	Salmonella Muenster
+Sal_TDT_2014K-0746	TDT	Salmonella Norwich
+Sal_TDU_2011K-0797	TDU	Salmonella Ohio
+Sal_TDW_2013K-0042	TDW	Salmonella Uganda
+Sal_TDX_2012K-1532	TDX	Salmonella Virchow
+Sal_TDY_2012K-1219	TDY	Salmonella Worthington
+Sal_TDY_ATCC_9607	TDY	Salmonella Worthington
+Sal_TEA_2015K-0726	TEA	Salmonella Miami
+Sal_TEE_150	TEE	Salmonella Rissen
+Sal_TEL_2015K-0051	TEL	Salmonella Johannesburg
+Sal-JBP-2014K-0952	JBP	Salmonella Braenderup
+Sal-JBP-PNUSAS000212	JBP	Salmonella Braenderup
+Sal-JEG-FDA00001665-S1	JEG	Salmonella Enteritidis
+Sal-JEG-FDA00004012	JEG	Salmonella Enteritidis
+Sal-JF6-2013K-1649	JF6	Salmonella Heidelberg
+Sal-JF6-PNUSAS000213	JF6	Salmonella Heidelberg
+2018K-0840_Salmonella_enterica_Infantis	JFX	Salmonella Infantis
+Sal_JEG_CDC_2011K-0222	JEG	Salmonella Enteritidis
+Sal_JF6_CFSAN002064	JF6	Salmonella Heidelberg
+Sal_JFX_CFSAN003307	JFX	Salmonella Infantis
+Sal_JJP_36805	JJP	Salmonella Newport
+Sal_JPX_var_5_CFSAN001921	JPX	Salmonella Wierd
+Sal_JEG_CDC_2010K-0968	JEG	Salmonella Enteritidis
+	   	
