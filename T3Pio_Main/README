@@ -34,3 +34,126 @@ T3Pio utilizes open source bioinformatics software and takes as input annotated 
    
 ## Main Components
 
+####GENERAL NOTE THESE ARE THE MAJOR BLOCKS INVOLVED
+SOME BLOCKS MAY BE UTILIZING OTHER MODULES/METHODS INSIDE THEM
+GENERALLY SHOULD BE MORE GENERALIZED MODULES METHODS
+
+#########################################################
+Step1. User Inputs
+('Int') number of isolates being input into the script
+('Int') percent inclusion for orthogroups
+How many isolates must be present in an orthogroup to be used
+('String') boulder.io file with desired params
+Missing Sequence portion of file
+('String') folder path to folder containg GBK files
+('String') Date, used in finding Orthofinder.txt file
+('String') Output folder name
+('Int') number of cores available 
+
+#########################################################
+Step2. Grabbing the GBK files
+User input ('String') GBK folder path
+Current method to grab files using glob and storing them in ('List') of ('Strings')
+
+#########################################################
+Step3. Parse the GBK Files
+Current module takes as input the ('List') of ('Strings') containg the files paths to the GBK files
+Returns (for now) a ('Dictionary') of ('Strings')
+Dictionary format (dictionary[SequenceName]:'Sequence')
+Stores the nucleic acid Sequence as the value and the key is SequenceName
+Writes ('IO') FaaFiles with the amino acid sequences for each input isolate
+
+#########################################################
+Step4. Running Orthofinder
+Future module takes as input ('Int') number of cores, ('String') Output folder name, and
+('String') the user supplied date
+Returns ('String') file path to Orthogroups.txt file
+
+#########################################################
+Step5. Parsing Orthofinder file
+Current module takes as input ('String') file path to Orthogroups.txt file
+Returns ('Dictionary')
+Dictionary format (dictionary[Orthogroup]:['SeqName',...,'SeqName']
+Stores a ('List') of SeqNames as the value and Orthogroup is the key
+
+#########################################################
+Step6. Paring Down of Orthogroups
+Future module takes as input ('Int') number of isolates input, ('Int') percent inclusing, and
+('Dictionary') from Step5
+Returns ('List') of ('Class Objects')
+Class OrthofinderResults
+contains orthogroup number and ('List') of ('Strings')
+('List') of ('Strings') contains the SeqNames
+NOTE THE CLASS OBJECTS COULD ALSO BE IMPLEMENTED IN STEP5 INSTEAD
+
+#########################################################
+
+#########################################################
+Step8. Create Multifasta File
+Future module takes as input ('Class Object') OrthofinderResults, ('Dictionary') created in Step2, and
+('String') Output name
+Writes ('IO') a single multifasta file
+Returns ('String') file path to the multifasta file
+
+#########################################################
+Step9. Running Muscle
+Current/Future module takes as input ('String') file path to a multifasta file
+Writes ('IO') muscle file
+Returns ('String') file path to muscle file
+
+#########################################################
+Step10. Running trimAl
+Current/Future module takes as input ('String') file path to muscle file
+Writes ('IO') trimAl file
+Returns ('String') file path to trimAl file
+
+#########################################################
+Step11. Running EMBOSS Consambig
+Current/Future module takes as input ('String') file path to trimAl file
+Writes ('IO') consambig file
+Returns ('String') file path to consambig file
+
+#########################################################
+Step12. Running Primer3
+Future module takes as input ('List') of ('Strings') containing boulder.io file params and,
+('String') file path to consambig file
+Reads ('IO') consambig file in to get ('String') consensus sequence
+Writes ('IO') new boulder.io out conatinging consensus sequence
+Returns ('Dictionary')
+Dictionary format (dictionary[Orthogroup]:['Primer3',...,'Output'])
+('List') of ('Strings') primer3 output is the value and the key if ('String') Orthogroup
+
+#########################################################
+Step13. Primer3 Parsing
+Current module takes as input ('Dictionary') from Step12
+Returns('List') of ('Class Objects') Primers
+
+#########################################################
+Step14. Check Primers Flanking Region
+Future module takes as input ('List') of ('Class Objects') Primers
+Returns ('List') of ('Class Objects') Primers
+
+#########################################################
+Step15. Checking Primers for Overlap
+Future module takes as input ('List') of ('Class Objects') Primers
+Returns ('List') of ('Class Objects') Primers
+
+#########################################################
+Step16. Running Primersearch
+Future moduel takes as input ('List') of ('Class Objects') Primers and ('String') file path to trimAl file
+Writes ('IO') primersearch file
+Returns ('String') file path to primersearch file
+
+#########################################################
+Step17. Primersearch Output Parsing
+Future module takes as input ('List') of ('Class Objects') Primers from Step15 and ('String') file path to primersearch file
+Returns ('List') of ('Class Objects') PrimerSearch
+Class PrimerSearch
+('Class') PrimerSearch will hold ('Class') Primers holds ('Class') Orthogroup
+addtionally stores ('Int') amplicon length, ('Int') LetfHit, and ('Int') RightHit
+
+#########################################################
+Step18. Amplicon Generation
+Future module takes as input ('List') of ('Class Objects') PrimerSearch and ('String') file path to trimAl file
+Returns nothing
+Writes ('IO') multifasta files conating amplicons and primer files
