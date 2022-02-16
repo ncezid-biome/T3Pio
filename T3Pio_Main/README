@@ -2,20 +2,35 @@
 
 T3Pio is an amplicon generation pipeline built for designing direct from stool amplicon sets for HMAS schemes
 
+## Description
+
+T3Pio utilizes open source bioinformatics software and takes as input annotated genomes from the group of interest. Core genes are identified, and primers are designed to generate amplicons compatible with the user’s chosen HMAS platform. Our settings allowed up to 3 degenerate bases per 180-250 bp primer.
 
 ## Requirements
 
 1. Python 3 or higher. Download python [here](https://www.python.org/downloads/).
-2. Orthofinder 2.1.2 or higher. Download orthofinder [here](https://github.com/davidemms/OrthoFinder).
-3. TrimAl 1.2 or higher. Download orthofinder [here](https://github.com/inab/trimal).
-4. EMOBSS 6.4.0 or higher. Download emboss [here](ftp://emboss.open-bio.org/pub/EMBOSS/).
-5. Primer3 2.3.4 or higher. Download primer3 [here](https://github.com/primer3-org/primer3/releases).
-6. MUSCLE 3.6 or higher. Download muscle [here](https://drive5.com/muscle/downloads_v3.htm).
+2. Orthofinder 2.1.2. Download orthofinder [here](https://github.com/davidemms/OrthoFinder).
+3. TrimAl 1.2. Download orthofinder [here](https://github.com/inab/trimal).
+4. EMOBSS 6.4.0. Download emboss [here](ftp://emboss.open-bio.org/pub/EMBOSS/).
+5. Primer3 2.3.4. Download primer3 [here](https://github.com/primer3-org/primer3/releases).
+6. MUSCLE 3.6. Download muscle [here](https://drive5.com/muscle/downloads_v3.htm).
 
 ## Install
 
 1. Copy the Github repository to a folder  
 `git clone https://github.com/Code_Repository/T3Pio_Main.git`
 
+## Usage
 
+1. Run the following script at your base folder  
+ `python3 moduleFile.py -h `
+ (there are numerous input flags needed)  
+    1. Number of isolates to be analyize
+    2. Percent inclusion for the partial core MLST scheme
+    3. Location of the template boulderIO file
+    4. File to the directory containing your gbk file
+    5. Out directory for intermediate files to be stored
+    6. Number of cores you want to use
+   
+## Main Components
 
