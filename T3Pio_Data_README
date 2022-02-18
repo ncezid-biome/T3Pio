@@ -1,11 +1,14 @@
 # GWA Data and References
 
+##Data Set Location
+1. /scicomp/groups/OID/NCEZID/DFWED/EDLB/projects/T3Pio_Data
+
 ##Design Set
 1. 19 genomes used in designing the current set of primers
    1. Represent the most common outbreak Salmonella strains
 
 ##DesignSpecFilMultifasta
-1. Amplicons generated from the most recent pipeline run on the 19 design isolates
+1. Amplicons generated from the version 0.3 pipeline run on the 19 design isolates
    1. Uses the shared primers from blastANI and stoolbugs specificity testing
 
 ##Metagenomes
@@ -14,16 +17,17 @@
    2. blast was then used to identify the generated amplicons as pertaining to salmonella of non-salmonella specific targets
 
 ##MasterPrimerFile
-1. List of the identified shared primers from the blastANI approach and stoolbug testing
+1. List of the identified shared primers from the blastANI approach and stoolbug (JulieBugs) testing
+2. From the pipeline version 0.3
 
 ##Sal_26_genome_serotypes
 1. List of the serotypes used in both the design and validation set
 
 ##SpecSharedPrimersValFasta
-1. Amplicons generated from the most recent pipeline run on the 266 validation isolates
+1. Amplicons generated from the version 0.3 pipeline run on the 266 validation isolates
    1. Represents the diversity of salmonella serotypes
 
-##StoolBugMultiFastas
+##StoolBugMultiFastas(JulieBugs)
 1. Set of 330 genomes of commonly found bacteria in stool
    1. Used to help identify salmonella specific primers in conjuction with the blastANI approach
 
@@ -31,5 +35,5 @@
 1. Set of 266 salmonella isolates used in validation of the primer MLST scheme
 
 ##ValidationSpecFilMultifasta
-1. Amplicons generated from the most recent pipeline run on the 266 validation isolates
-   1. Uses the shared primers from blastANI and stoolbugs specificity testing
+1. Amplicons generated from the version 0.3 pipeline run on the 266 validation isolates
+   1. Uses the shared primers from blastANI and stoolbugs (JulieBugs) specificity testing
