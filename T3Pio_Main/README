@@ -87,34 +87,32 @@ contains orthogroup number and ('List') of ('Strings')
 NOTE THE CLASS OBJECTS COULD ALSO BE IMPLEMENTED IN STEP5 INSTEAD
 
 #########################################################
-
-#########################################################
-Step8. Create Multifasta File
+Step7. Create Multifasta File
 Future module takes as input ('Class Object') OrthofinderResults, ('Dictionary') created in Step2, and
 ('String') Output name
 Writes ('IO') a single multifasta file
 Returns ('String') file path to the multifasta file
 
 #########################################################
-Step9. Running Muscle
+Step8. Running Muscle
 Current/Future module takes as input ('String') file path to a multifasta file
 Writes ('IO') muscle file
 Returns ('String') file path to muscle file
 
 #########################################################
-Step10. Running trimAl
+Step9. Running trimAl
 Current/Future module takes as input ('String') file path to muscle file
 Writes ('IO') trimAl file
 Returns ('String') file path to trimAl file
 
 #########################################################
-Step11. Running EMBOSS Consambig
+Step10. Running EMBOSS Consambig
 Current/Future module takes as input ('String') file path to trimAl file
 Writes ('IO') consambig file
 Returns ('String') file path to consambig file
 
 #########################################################
-Step12. Running Primer3
+Step11. Running Primer3
 Future module takes as input ('List') of ('Strings') containing boulder.io file params and,
 ('String') file path to consambig file
 Reads ('IO') consambig file in to get ('String') consensus sequence
@@ -124,28 +122,28 @@ Dictionary format (dictionary[Orthogroup]:['Primer3',...,'Output'])
 ('List') of ('Strings') primer3 output is the value and the key if ('String') Orthogroup
 
 #########################################################
-Step13. Primer3 Parsing
+Step12. Primer3 Parsing
 Current module takes as input ('Dictionary') from Step12
 Returns('List') of ('Class Objects') Primers
 
 #########################################################
-Step14. Check Primers Flanking Region
+Step13. Check Primers Flanking Region
 Future module takes as input ('List') of ('Class Objects') Primers
 Returns ('List') of ('Class Objects') Primers
 
 #########################################################
-Step15. Checking Primers for Overlap
+Step14. Checking Primers for Overlap
 Future module takes as input ('List') of ('Class Objects') Primers
 Returns ('List') of ('Class Objects') Primers
 
 #########################################################
-Step16. Running Primersearch
+Step15. Running Primersearch
 Future moduel takes as input ('List') of ('Class Objects') Primers and ('String') file path to trimAl file
 Writes ('IO') primersearch file
 Returns ('String') file path to primersearch file
 
 #########################################################
-Step17. Primersearch Output Parsing
+Step16. Primersearch Output Parsing
 Future module takes as input ('List') of ('Class Objects') Primers from Step15 and ('String') file path to primersearch file
 Returns ('List') of ('Class Objects') PrimerSearch
 Class PrimerSearch
@@ -153,7 +151,7 @@ Class PrimerSearch
 addtionally stores ('Int') amplicon length, ('Int') LetfHit, and ('Int') RightHit
 
 #########################################################
-Step18. Amplicon Generation
+Step17. Amplicon Generation
 Future module takes as input ('List') of ('Class Objects') PrimerSearch and ('String') file path to trimAl file
 Returns nothing
 Writes ('IO') multifasta files conating amplicons and primer files
@@ -192,3 +190,108 @@ The T3Pio Validation Module is designed to run primers created in the T3Pio pipe
 ####GENERAL NOTE THESE ARE THE MAJOR BLOCKS INVOLVED
 SOME BLOCKS MAY BE UTILIZING OTHER MODULES/METHODS INSIDE THEM
 GENERALLY SHOULD BE MORE GENERALIZED MODULES METHODS
+
+#########################################################
+
+Class1. Primers
+relevent information regarding primers used in the analysis
+    Attributes:
+        orthogroupInfo: String representing which orthogroup the primer belongs to
+        number: String representing which primer it is for a respective orthogroup
+        leftSeq: String representing the forward primer sequence 5'-3'
+        rightSeq: String representing the reverse primer sequence 5'-3'
+        leftHit: Integer representing where the first base of the forward primer lands in a genome
+        rightHit: Integer representing where the last base of the reverse primer lands in a genome
+        leftLen: Integer representing the length of the forward primer
+        rightLen: Integer representing the length of the reverse primer
+
+#########################################################
+Class2. PrimerSearchResults
+Relevent information from in silico PCR program Emboss/primersearch
+    Atributes:
+       primerInfo: String representing the primer used in the in silico analysis
+       sequenceName: String representing the contig the primers hit
+       ampLen: Integer representing the length of the predicted amplicon
+       leftHit: Integer representing where the first base of the forward primer lands
+       rightHit: Integer representing where the last base of the reverse primer lands
+       sequence: String representing the predicted amplicon
+
+#########################################################
+
+('Def') OutputLoggingFileSetter() comments
+Takes as input ('String') outfile path 
+('String') primerFile name
+Sets Logger file name 
+Sets input logging level to Debug
+Sets logger file format to include Time,logging level, message
+Set logger file handler
+Returns nothing Just sets the logging file
+
+#########################################################
+
+('Def') PrimmersearchRunner() comments
+Takes as input ('String') trimalFile path
+('List') of ('Primers') ('Objects')
+Creates ('IO') primer file for primersearch 
+Pulls primer number/forward/reverse sequences from ('Primers') ('Object')
+Stores information in ('List') primerInfoList
+Runs primersearch using subprocess
+Returns ('String') primersearchFile.ps file path
+
+#########################################################
+('Def') PrimersearchValidator() comments:
+Takes as input ('List') ampliconInfo
+('Int') numberIsolates
+Uses list comprehension to pull sequence names from ('List') ampliconInfo
+Creates ('Set') sequencesSet of ('List') sequences
+Checks for equal length to ensure no duplicate isolates pulled
+Checks correct number sequences present against ('Int') numberIsolates
+Returns ('True') if proper number of isolates and no duplicates present
+Returns ('False') if improper number of isolates and/or duplicates present
+
+#########################################################
+('Def') PrimersearchComber() comments:
+Takes as input ('List') ampliconInfo
+('Primer') ('Object') primer
+('Dictionary') sequenceRecordDict
+Parses ('List') ampliconInfo to find forwardHit/reverseHit/ampliconLen/sequenceName for each isolate record present in ('List') ampliconInfo
+Pulls isolate sequence from ('Dictionary') sequenceRecordDict and slices ('String') for amplicon
+sequence 
+Stores information in ('Object') ('PrimerSearchResults') for each isolate
+Returns ('List') of ('PrimerSearchResults') ('Objects')
+
+#########################################################
+('Def') PrimersearchParser() comments:
+Takes as input ('String') primersearchFile file path
+('Int') numberIsolates
+('List') of ('Primer') ('Objects')
+('String') trimalFile file path
+('IO') reads in primersearchFile to ('List') primersearchInfo
+Stores trimalFile into ('SeqIO') ('Dictionary') ('Object') sequenceRecordDict
+Indexes ('List') primersearchInfo on 'Primer name' + ('Primer') ('Object') primer.numer
+Slices ('List') primersearchInfo using index and ('Int') numerIsolates * 6 into ('List') ampliconInfo
+Sends ('List') ampliconInfo and ('Int') numberIsolates to ('Def') PrimersearchValidator()
+Sends ('List') ampliconInfo and ('Primer') ('Object') to ('Def') PrimersearchComber
+Returns ('List') of ('PrimerSearchResults') ('Objects')
+
+#########################################################
+('Def') ValidationPrimerIntake() comments
+Takes as input ('String') primerFile primer file path
+Logger logging file
+Creates ('Class') Primers object 
+Returns primerObjects
+
+#########################################################
+('Def') AssemblyDictionary() comments
+Takes as input ('String') assemblyFile file path
+Logger logging file
+Turns assembly file into ('Dict') sequenceRecordDict SeqIO dictionary object
+Returns ('Dict') sequenceRecordDict
+
+#########################################################
+('Def') ParallelFunctions() comments
+Takes as input('String') primerFile file path
+('String') assemblyFile file path
+('String') outfile file path
+Sets functions to run in parallel
+Returns ('List') of ('Objects') PrimerSearchResults
