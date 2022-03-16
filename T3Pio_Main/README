@@ -344,23 +344,6 @@ Returns ('lists') of ('PrimersearchResults') ('Objects')
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # T3Pio Validation Module
 
 The T3Pio Validation Module is designed to run primers created in the T3Pio pipeline on a set of isolates to generate in silico amplicons.
