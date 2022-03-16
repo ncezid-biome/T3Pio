@@ -14,6 +14,7 @@ T3Pio utilizes open source bioinformatics software and takes as input annotated 
 4. EMOBSS 6.4.0. Download emboss [here](ftp://emboss.open-bio.org/pub/EMBOSS/).
 5. Primer3 2.3.4. Download primer3 [here](https://github.com/primer3-org/primer3/releases).
 6. MUSCLE 3.6. Download muscle [here](https://drive5.com/muscle/downloads_v3.htm).
+7. boulderFile. Necessary input file for primer3. Works as a template file, that primer3 uses to generate primers.
 
 ## Install
 
