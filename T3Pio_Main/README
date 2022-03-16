@@ -72,6 +72,7 @@ Returns ('String') file path to Orthogroups.txt file
 
 #########################################################
 Step5. Parsing Orthofinder file
+orthoFinderParser()
 Current module takes as input ('String') file path to Orthogroups.txt file
 Returns ('Dictionary')
 Dictionary format (dictionary[Orthogroup]:['SeqName',...,'SeqName']
@@ -156,6 +157,207 @@ Step17. Amplicon Generation
 Future module takes as input ('List') of ('Class Objects') PrimerSearch and ('String') file path to trimAl file
 Returns nothing
 Writes ('IO') multifasta files conating amplicons and primer files
+
+# T3Pio Coding Blocks
+
+#########################################################
+('Class') Orthogroup comments 
+holds: ('String') orthogroup which is an orthogroup number
+format OG####### <- those are ('String') numbers not hashes
+('String') sequence which is a consensus sequence
+
+#########################################################
+('Class') Primers comments
+holds: ('Class Object') Orthogroup orthogroupInfo
+('Int') number which 
+('String') leftSeq
+('String') rightSeq
+('Int') leftHit
+('Int') rightHit
+('Int') leftLen
+('Int') rightLen
+
+#########################################################
+('Def') orthoFinderParser() comments
+Takes as input the Orthogroup.txt file that is generated from OrthoFinder
+Returns orthDict dictionary 
+Keys are orthogroup names and values are lists of insolates in the orthogroup
+Very simple file parsing
+Removes trailing '\n' from each line and splits on spaces ' '
+Removes ':' from orthogroup name
+
+#########################################################
+('Def') dictionaryCleaner() comments
+Takes as input a ('Dictionary')
+Tracks through the input ('Dictionary') looking for keys with empty values
+Deletes keys that have empty values
+Returns the ('Dictionary')
+
+#########################################################
+('Def') primer3Parser() comments
+Takes as input a ('Dictionary') containing the STDOUT from primer3
+Initiates the ('List') primerPairObjectList which will hold the ('Class Objects') Primers
+Initiates the ('List') primerInfoList to hold the ('Strings') from the input ('Dictionary')
+Uses indexing on the ('List') primerInfoList to pull out ('Int') totalPrimersReturned
+('Int') totalPrimersReturned is used for the while loop to iterate through ('List') primerInfoList to pull out:
+('String') leftSequence
+('String') rightSequence
+('Int') leftHit
+('Int') rightHit
+('Int') leftLength
+('Int') rightLength
+Pulled information is stored in ('Class Object') Primers 
+Returns ('List') of ('Class Objects') Primers
+
+#########################################################
+('Def') OrthofinderRunner() comments
+Takes as input ('Int') number of cores to use ('numCores')
+('String') file path to the folder containing amino acid fasta files ('faaFiles')
+('String') user supplied date ('date')
+Runs orthofinder program
+Returns ('String') file path to the orthofinder output file ('orthoText')
+
+#########################################################
+('Def') OrthofinderParing() comments
+Takes as input ('Int') number of isolates originally submitted ('numberOfIsolates')
+('Float') percent inclusion to be considered an orthogroup ('percentInclusion')
+('List') of ('OrthofinderObjectList')('Objects') ('obList')
+Calculates the number is isolates in an orthogroup needed in order to pass filter ('numberNeeded')
+('For') loops through ('List') of ('OrthofinderResults')('Objects') and checks to see if an orthogroup has a sufficient number
+First checks for multiple of same isolate in an orthogroup appends seqNames into a ('List')('SeqNameList') after split on ('.') to get isolate name 
+creates a ('Set')('seqNameSet') and compares ('Set') and ('List') lengths if the same then checks to see if orthogroup has appropriate number of isolates in it
+returns ('List') ('paredDownList') of ('OrthofinderResults')('Objects')
+
+#########################################################
+('Def') MultifastaGenerator() comments
+Takes as input single ('OrthofinderResults') ('Object') ('ofrObject')
+('Dictionary') from ('Def') gbkParser() (dictionary[SequenceName]:'Sequence') ('nucDict')
+('String') user supplies out directory ('outName')
+opens multifasta file 
+Uses ('Dictionary') search to print the Sequence name and sequence in fasta format
+Returns ('String') file path to the multifasta file 
+
+#########################################################
+('Def') MuscleFileGenerator() comments
+Takes as input ('String') file path to a multifasta file ('multifastaFile')
+Runs muscle
+Returns ('String') file path to the muscle file
+
+#########################################################
+('Def') TrimAlFileGenerator() comments
+Takes as input ('String') file path to a muscle file ('muscleFile')
+Runs trimAl 
+Returns ('String') file path to the trimAl file
+
+#########################################################
+('Def') ConsambigFileGenerator() comments
+Light string manipulation to gather consambig inputs
+('fileName') is the name of the output file
+('directoryPath') is the path to the directory where the output will be 
+Runs EMBOSS consambig 
+Returns ('String') file path to the consambig file
+
+#########################################################
+('Def') RunPrimer3() comments
+Takes as input ('String') file path to a consambig file ('consambigFile')
+('List') of ('Strings') containing all the global primer3 values used in a boulder file
+reads in ('consambigFile') and creates the Sequence information for primer3
+generates the boulder file
+Runs primer3
+Captures stdout from primer3 and generates a ('Dictionary') ('primer3Dict')
+Returns ('Dictionary') (dictionary[Orthogroup]:['Primer3',...,'Output']
+
+#########################################################
+('Def') PrimerFlankingRegionCheck() comments
+Takes as input ('List') of ('Primers') ('Objects')
+Slices out the primer flanked region of the sequence
+Checks the sequence for inclusion of SNPs
+Returns ('List') of ('Primers') ('Objects') ('clearedPrimers')
+
+#########################################################
+('Def') PrimmersearchRunner() comments
+Takes as input ('String') trimalFile path
+('List') of ('Primers') ('Objects')
+Creates ('IO') primer file for primersearch 
+Pulls primer number/forward/reverse sequences from ('Primers') ('Object')
+Stores information in ('List') primerInfoList
+Runs primersearch using subprocess
+Returns ('String') primersearchFile.ps file path
+
+#########################################################
+('Def') PrimersearchValidator() comments:
+Takes as input ('List') ampliconInfo
+('Int') numberIsolates
+Uses list comprehension to pull sequence names from ('List') ampliconInfo
+Creates ('Set') sequencesSet of ('List') sequences
+Checks for equal length to ensure no duplicate isolates pulled
+Checks correct number sequences present against ('Int') numberIsolates
+Returns ('True') if proper number of isolates and no duplicates present
+Returns ('False') if improper number of isolates and/or duplicates present
+
+#########################################################
+('Def') PrimersearchComber() comments:
+Takes as input ('List') ampliconInfo
+('Primer') ('Object') primer
+('Dictionary') sequenceRecordDict
+Parses ('List') ampliconInfo to find forwardHit/reverseHit/ampliconLen/sequenceName for each isolate record present in ('List') ampliconInfo
+Pulls isolate sequence from ('Dictionary') sequenceRecordDict and slices ('String') for amplicon sequence 
+Stores information in ('Object') ('PrimerSearchResults') for each isolate
+Returns ('List') of ('PrimerSearchResults') ('Objects')
+
+#########################################################
+('Def') PrimersearchParser() comments:
+Takes as input ('String') primersearchFile file path
+('Int') numberIsolates
+('List') of ('Primer') ('Objects')
+('String') trimalFile file path
+('IO') reads in primersearchFile to ('List') primersearchInfo 
+Stores trimalFile into ('SeqIO') ('Dictionary') ('Object') sequenceRecordDict
+Indexes ('List') primersearchInfo on 'Primer name' + ('Primer') ('Object') primer.numer
+Slices ('List') primersearchInfo using index and ('Int') numerIsolates * 6 into ('List') ampliconInfo
+Sends ('List') ampliconInfo and ('Int') numberIsolates to ('Def') PrimersearchValidator()
+Sends ('List') ampliconInfo and ('Primer') ('Object') to ('Def') PrimersearchComber
+Returns ('List') of ('PrimerSearchResults') ('Objects')
+
+#########################################################
+('Def') BoulderIOParser() comments
+Takes as input ('String') boulderFile file path
+Parses ('List') designInfo
+Returns ('List') primerDesignInfo
+
+#########################################################
+('Def') IsolateNumberVerification() comments
+Takes as input ('List') gbkFiles
+('Int') userSuppliedNumber
+Confirms number of files taken in is equal to number of files expected
+Returns ('True') is numbers match
+Returns ('False') if number do not match
+
+#########################################################
+('Def') parallelRunner() comments
+Takes as input ('List') ('OrthofinderResults') ('Objects')
+Sets pool to number of processes to be used
+Uses partial for ('Def') ParallelFunctions() to set static arguments
+Allows for looping through ('List') ('OrthofinderResults') ('Objects')
+Returns ('lists') of ('PrimersearchResults') ('Objects')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
