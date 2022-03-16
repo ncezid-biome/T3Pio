@@ -157,3 +157,38 @@ Step18. Amplicon Generation
 Future module takes as input ('List') of ('Class Objects') PrimerSearch and ('String') file path to trimAl file
 Returns nothing
 Writes ('IO') multifasta files conating amplicons and primer files
+
+
+
+# T3Pio Validation Module
+
+The T3Pio Validation Module is designed to run primers created in the T3Pio pipeline on a set of isolates to generate in silico amplicons.
+
+
+## Requirements
+
+1. Python 3 or higher. Download python [here](https://www.python.org/downloads/).
+2. EMOBSS 6.4.0. Download emboss [here](ftp://emboss.open-bio.org/pub/EMBOSS/).
+
+
+## Install
+
+1. Copy the Github repository to a folder  
+`git clone https://github.com/Code_Repository/T3Pio_Main.git`
+
+## Usage
+
+1. Run the following script at your base folder  
+ `python3 validationModule.py -h `
+ (there are numerous input flags needed)  
+    1. Directory where isolate assemblies are located
+    2. File type of the assemblies
+    3. Directory where the primer files are located
+    4. Number of cores you want to use
+    5. Out directory for files to be stored
+   
+## Main Components
+
+####GENERAL NOTE THESE ARE THE MAJOR BLOCKS INVOLVED
+SOME BLOCKS MAY BE UTILIZING OTHER MODULES/METHODS INSIDE THEM
+GENERALLY SHOULD BE MORE GENERALIZED MODULES METHODS
