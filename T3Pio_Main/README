@@ -115,42 +115,91 @@ Returns ('String') file path to consambig file
 
 #########################################################
 Step11. Running Primer3
-Module takes as input ('List') of ('Strings') containing boulder.io file params and,
-('String') file path to consambig file
-Reads ('IO') consambig file in to get ('String') consensus sequence
-Writes ('IO') new boulder.io out conatinging consensus sequence
-Returns ('Dictionary')
-Dictionary format (dictionary[Orthogroup]:['Primer3',...,'Output'])
-('List') of ('Strings') primer3 output is the value and the key if ('String') Orthogroup
+
+Code Block:
+('Def') RunPrimer3()
+Takes as input ('String') file path to a consambig file ('consambigFile')
+('List') of ('Strings') containing all the global primer3 values used in a boulder file
+reads in ('consambigFile') and creates the Sequence information for primer3
+generates the boulder file
+Runs primer3
+Captures stdout from primer3 and generates a ('Dictionary') ('primer3Dict')
+Returns ('Dictionary') (dictionary[Orthogroup]:['Primer3',...,'Output']
 
 #########################################################
 Step12. Primer3 Parsing
-Module takes as input ('Dictionary') from Step12
-Returns('List') of ('Class Objects') Primers
+
+Code Block:
+('Def') primer3Parser()
+Takes as input a ('Dictionary') containing the STDOUT from primer3
+Initiates the ('List') primerPairObjectList which will hold the ('Class Objects') Primers
+Initiates the ('List') primerInfoList to hold the ('Strings') from the input ('Dictionary')
+Uses indexing on the ('List') primerInfoList to pull out ('Int') totalPrimersReturned
+('Int') totalPrimersReturned is used for the while loop to iterate through ('List') primerInfoList to pull out:
+('String') leftSequence
+('String') rightSequence
+('Int') leftHit
+('Int') rightHit
+('Int') leftLength
+('Int') rightLength
+Pulled information is stored in ('Class Object') Primers 
+Returns ('List') of ('Class Objects') Primers
 
 #########################################################
 Step13. Check Primers Flanking Region
-Module takes as input ('List') of ('Class Objects') Primers
-Returns ('List') of ('Class Objects') Primers
 
+Code Block:
+('Def') PrimerFlankingRegionCheck()
+Takes as input ('List') of ('Primers') ('Objects')
+Slices out the primer flanked region of the sequence
+Checks the sequence for inclusion of SNPs
+Returns ('List') of ('Primers') ('Objects') ('clearedPrimers')
 #########################################################
 Step14. Checking Primers for Overlap
 Module takes as input ('List') of ('Class Objects') Primers
 Returns ('List') of ('Class Objects') Primers
 
+
 #########################################################
 Step15. Running Primersearch 
-Moduel takes as input ('List') of ('Class Objects') Primers and ('String') file path to trimAl file
-Writes ('IO') primersearch file
-Returns ('String') file path to primersearch file
+
+Code Block:
+('Def') PrimmersearchRunner()
+Takes as input ('String') trimalFile path
+('List') of ('Primers') ('Objects')
+Creates ('IO') primer file for primersearch 
+Pulls primer number/forward/reverse sequences from ('Primers') ('Object')
+Stores information in ('List') primerInfoList
+Runs primersearch using subprocess
+Returns ('String') primersearchFile.ps file path
 
 #########################################################
 Step16. Primersearch Output Parsing
-Module takes as input ('List') of ('Class Objects') Primers from Step15 and ('String') file path to primersearch file
-Returns ('List') of ('Class Objects') PrimerSearch
-Class PrimerSearch
-('Class') PrimerSearch will hold ('Class') Primers holds ('Class') Orthogroup
-addtionally stores ('Int') amplicon length, ('Int') LetfHit, and ('Int') RightHit
+
+Code Block:
+('Def') PrimersearchValidator()
+Takes as input ('List') ampliconInfo
+('Int') numberIsolates
+Uses list comprehension to pull sequence names from ('List') ampliconInfo
+Creates ('Set') sequencesSet of ('List') sequences
+Checks for equal length to ensure no duplicate isolates pulled
+Checks correct number sequences present against ('Int') numberIsolates
+Returns ('True') if proper number of isolates and no duplicates present
+Returns ('False') if improper number of isolates and/or duplicates present
+
+Code Block:
+('Def') PrimersearchParser()
+Takes as input ('String') primersearchFile file path
+('Int') numberIsolates
+('List') of ('Primer') ('Objects')
+('String') trimalFile file path
+('IO') reads in primersearchFile to ('List') primersearchInfo 
+Stores trimalFile into ('SeqIO') ('Dictionary') ('Object') sequenceRecordDict
+Indexes ('List') primersearchInfo on 'Primer name' + ('Primer') ('Object') primer.numer
+Slices ('List') primersearchInfo using index and ('Int') numerIsolates * 6 into ('List') ampliconInfo
+Sends ('List') ampliconInfo and ('Int') numberIsolates to ('Def') PrimersearchValidator()
+Sends ('List') ampliconInfo and ('Primer') ('Object') to ('Def') PrimersearchComber
+Returns ('List') of ('PrimerSearchResults') ('Objects')
 
 #########################################################
 Step17. Amplicon Generation
@@ -194,20 +243,7 @@ Deletes keys that have empty values
 Returns the ('Dictionary')
 
 #########################################################
-('Def') primer3Parser() comments
-Takes as input a ('Dictionary') containing the STDOUT from primer3
-Initiates the ('List') primerPairObjectList which will hold the ('Class Objects') Primers
-Initiates the ('List') primerInfoList to hold the ('Strings') from the input ('Dictionary')
-Uses indexing on the ('List') primerInfoList to pull out ('Int') totalPrimersReturned
-('Int') totalPrimersReturned is used for the while loop to iterate through ('List') primerInfoList to pull out:
-('String') leftSequence
-('String') rightSequence
-('Int') leftHit
-('Int') rightHit
-('Int') leftLength
-('Int') rightLength
-Pulled information is stored in ('Class Object') Primers 
-Returns ('List') of ('Class Objects') Primers
+
 
 #########################################################
 ('Def') OrthofinderRunner() comments
@@ -257,42 +293,16 @@ Runs EMBOSS consambig
 Returns ('String') file path to the consambig file
 
 #########################################################
-('Def') RunPrimer3() comments
-Takes as input ('String') file path to a consambig file ('consambigFile')
-('List') of ('Strings') containing all the global primer3 values used in a boulder file
-reads in ('consambigFile') and creates the Sequence information for primer3
-generates the boulder file
-Runs primer3
-Captures stdout from primer3 and generates a ('Dictionary') ('primer3Dict')
-Returns ('Dictionary') (dictionary[Orthogroup]:['Primer3',...,'Output']
+
 
 #########################################################
-('Def') PrimerFlankingRegionCheck() comments
-Takes as input ('List') of ('Primers') ('Objects')
-Slices out the primer flanked region of the sequence
-Checks the sequence for inclusion of SNPs
-Returns ('List') of ('Primers') ('Objects') ('clearedPrimers')
+
 
 #########################################################
-('Def') PrimmersearchRunner() comments
-Takes as input ('String') trimalFile path
-('List') of ('Primers') ('Objects')
-Creates ('IO') primer file for primersearch 
-Pulls primer number/forward/reverse sequences from ('Primers') ('Object')
-Stores information in ('List') primerInfoList
-Runs primersearch using subprocess
-Returns ('String') primersearchFile.ps file path
+
 
 #########################################################
-('Def') PrimersearchValidator() comments:
-Takes as input ('List') ampliconInfo
-('Int') numberIsolates
-Uses list comprehension to pull sequence names from ('List') ampliconInfo
-Creates ('Set') sequencesSet of ('List') sequences
-Checks for equal length to ensure no duplicate isolates pulled
-Checks correct number sequences present against ('Int') numberIsolates
-Returns ('True') if proper number of isolates and no duplicates present
-Returns ('False') if improper number of isolates and/or duplicates present
+
 
 #########################################################
 ('Def') PrimersearchComber() comments:
@@ -305,18 +315,7 @@ Stores information in ('Object') ('PrimerSearchResults') for each isolate
 Returns ('List') of ('PrimerSearchResults') ('Objects')
 
 #########################################################
-('Def') PrimersearchParser() comments:
-Takes as input ('String') primersearchFile file path
-('Int') numberIsolates
-('List') of ('Primer') ('Objects')
-('String') trimalFile file path
-('IO') reads in primersearchFile to ('List') primersearchInfo 
-Stores trimalFile into ('SeqIO') ('Dictionary') ('Object') sequenceRecordDict
-Indexes ('List') primersearchInfo on 'Primer name' + ('Primer') ('Object') primer.numer
-Slices ('List') primersearchInfo using index and ('Int') numerIsolates * 6 into ('List') ampliconInfo
-Sends ('List') ampliconInfo and ('Int') numberIsolates to ('Def') PrimersearchValidator()
-Sends ('List') ampliconInfo and ('Primer') ('Object') to ('Def') PrimersearchComber
-Returns ('List') of ('PrimerSearchResults') ('Objects')
+
 
 #########################################################
 ('Def') BoulderIOParser() comments
