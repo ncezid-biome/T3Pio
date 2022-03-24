@@ -1,0 +1,18 @@
+Outline:
+1.Design Set Creation
+    1.1.Why these isolates chosen
+    1.2.Which isolates were chosen
+    1.3.Location of isolate assemblies and GBK files
+        1.3.1.How the GBK files were created
+2.Validation Set Creation
+    2.1.Why these isolates chosen
+    2.2.Which isolates were chosen
+    2.3.Location of isolate assemblies and GBK files
+        2.3.1.How the GBK files were created
+3.Orthofinder
+    3.1.How orthofinder works
+    3.2.What we put into orthofinder
+    3.3.Orthogroup selection
+        3.3.1.What orthogroups we included
+        3.3.2.Selection process
+4.
