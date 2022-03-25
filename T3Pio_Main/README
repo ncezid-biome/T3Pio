@@ -58,7 +58,7 @@ Current method to grab files using glob and storing them in ('List') of ('String
 
 #########################################################
 Step3. Parse the GBK Files
-Current module takes as input the ('List') of ('Strings') containg the files paths to the GBK files
+Module takes as input the ('List') of ('Strings') containg the files paths to the GBK files
 Returns (for now) a ('Dictionary') of ('Strings')
 Dictionary format (dictionary[SequenceName]:'Sequence')
 Stores the nucleic acid Sequence as the value and the key is SequenceName
@@ -66,9 +66,15 @@ Writes ('IO') FaaFiles with the amino acid sequences for each input isolate
 
 #########################################################
 Step4. Running Orthofinder
-Module takes as input ('Int') number of cores, ('String') Output folder name, and
-('String') the user supplied date
-Returns ('String') file path to Orthogroups.txt file
+
+Code Block:
+('Def') OrthofinderRunner() comments
+Takes as input ('Int') number of cores to use ('numCores')
+('String') file path to the folder containing amino acid fasta files ('faaFiles')
+('String') user supplied date ('date')
+Runs orthofinder program
+Returns ('String') file path to the orthofinder output file ('orthoText')
+
 
 #########################################################
 Step5. Parsing Orthofinder file
@@ -90,22 +96,32 @@ NOTE THE CLASS OBJECTS COULD ALSO BE IMPLEMENTED IN STEP5 INSTEAD
 
 #########################################################
 Step7. Create Multifasta File
-Module takes as input ('Class Object') OrthofinderResults, ('Dictionary') created in Step2, and
-('String') Output name
-Writes ('IO') a single multifasta file
-Returns ('String') file path to the multifasta file
+
+Code Block:
+('Def') MultifastaGenerator() comments
+Takes as input single ('OrthofinderResults') ('Object') ('ofrObject')
+('Dictionary') from ('Def') gbkParser() (dictionary[SequenceName]:'Sequence') ('nucDict')
+('String') user supplies out directory ('outName') opens multifasta file 
+Uses ('Dictionary') search to print the Sequence name and sequence in fasta format
+Returns ('String') file path to the multifasta file 
 
 #########################################################
 Step8. Running Muscle
-Module takes as input ('String') file path to a multifasta file
-Writes ('IO') muscle file
-Returns ('String') file path to muscle file
+
+Code Block:
+('Def') MuscleFileGenerator() comments
+Takes as input ('String') file path to a multifasta file ('multifastaFile')
+Runs muscle
+Returns ('String') file path to the muscle file
 
 #########################################################
 Step9. Running trimAl
-Module takes as input ('String') file path to muscle file
-Writes ('IO') trimAl file
-Returns ('String') file path to trimAl file
+
+Code Block:
+('Def') TrimAlFileGenerator() comments
+Takes as input ('String') file path to a muscle file ('muscleFile')
+Runs trimAl 
+Returns ('String') file path to the trimAl file
 
 #########################################################
 Step10. Running EMBOSS Consambig
@@ -246,12 +262,7 @@ Returns the ('Dictionary')
 
 
 #########################################################
-('Def') OrthofinderRunner() comments
-Takes as input ('Int') number of cores to use ('numCores')
-('String') file path to the folder containing amino acid fasta files ('faaFiles')
-('String') user supplied date ('date')
-Runs orthofinder program
-Returns ('String') file path to the orthofinder output file ('orthoText')
+
 
 #########################################################
 ('Def') OrthofinderParing() comments
@@ -265,24 +276,13 @@ creates a ('Set')('seqNameSet') and compares ('Set') and ('List') lengths if the
 returns ('List') ('paredDownList') of ('OrthofinderResults')('Objects')
 
 #########################################################
-('Def') MultifastaGenerator() comments
-Takes as input single ('OrthofinderResults') ('Object') ('ofrObject')
-('Dictionary') from ('Def') gbkParser() (dictionary[SequenceName]:'Sequence') ('nucDict')
-('String') user supplies out directory ('outName') opens multifasta file 
-Uses ('Dictionary') search to print the Sequence name and sequence in fasta format
-Returns ('String') file path to the multifasta file 
+
 
 #########################################################
-('Def') MuscleFileGenerator() comments
-Takes as input ('String') file path to a multifasta file ('multifastaFile')
-Runs muscle
-Returns ('String') file path to the muscle file
+
 
 #########################################################
-('Def') TrimAlFileGenerator() comments
-Takes as input ('String') file path to a muscle file ('muscleFile')
-Runs trimAl 
-Returns ('String') file path to the trimAl file
+
 
 #########################################################
 ('Def') ConsambigFileGenerator() comments
