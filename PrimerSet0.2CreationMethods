@@ -16,9 +16,27 @@ Outline:
         3.3.1.What orthogroups we included
         3.3.2.Selection process
 4.Multifasta Creation
+    4.1.How the multifasta files were generated
 5.MUSCLE
+    5.1.How the alignment files were generated
 6.TrimAl
+    6.1.What the trimming parameters were for the alignment files
 7.EMBOSS consambig
+    7.1.What the consensus file creation parameters were
 8.Primer3
+    8.1.What the primer creation specifications were
+    8.2.How primers were filtered
 9.EMBOSS PrimerSearch
+    9.1.What were the primersearch parameters
+    9.2.Primersearch file validation
+    9.3.Primersearch parsing
+        9.3.1.Multifasta generation from primersearch results
 10.Specificity Testing
+    10.1.BlastANI process
+        10.1.1.COAL metagenome set
+        10.1.2.BlastANI process
+    10.2.Stool Bugs
+        10.2.1.Stool bug generation process
+        10.2.2.Primersearch against stool bugs
+    10.3.Overlap primers
+        10.3.1.Finding primers passing in both BlastANI and stool bug specificity approaches
