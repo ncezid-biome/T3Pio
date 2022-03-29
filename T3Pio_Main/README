@@ -259,12 +259,6 @@ Deletes keys that have empty values
 Returns the ('Dictionary')
 
 #########################################################
-
-
-#########################################################
-
-
-#########################################################
 ('Def') OrthofinderParing() comments
 Takes as input ('Int') number of isolates originally submitted ('numberOfIsolates')
 ('Float') percent inclusion to be considered an orthogroup ('percentInclusion')
@@ -275,14 +269,6 @@ First checks for multiple of same isolate in an orthogroup appends seqNames into
 creates a ('Set')('seqNameSet') and compares ('Set') and ('List') lengths if the same then checks to see if orthogroup has appropriate number of isolates in it
 returns ('List') ('paredDownList') of ('OrthofinderResults')('Objects')
 
-#########################################################
-
-
-#########################################################
-
-
-#########################################################
-
 
 #########################################################
 ('Def') ConsambigFileGenerator() comments
@@ -291,17 +277,6 @@ Light string manipulation to gather consambig inputs
 ('directoryPath') is the path to the directory where the output will be 
 Runs EMBOSS consambig 
 Returns ('String') file path to the consambig file
-
-#########################################################
-
-
-#########################################################
-
-
-#########################################################
-
-
-#########################################################
 
 
 #########################################################
@@ -313,9 +288,6 @@ Parses ('List') ampliconInfo to find forwardHit/reverseHit/ampliconLen/sequenceN
 Pulls isolate sequence from ('Dictionary') sequenceRecordDict and slices ('String') for amplicon sequence 
 Stores information in ('Object') ('PrimerSearchResults') for each isolate
 Returns ('List') of ('PrimerSearchResults') ('Objects')
-
-#########################################################
-
 
 #########################################################
 ('Def') BoulderIOParser() comments
