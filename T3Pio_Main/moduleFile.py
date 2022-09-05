@@ -10,8 +10,7 @@ class Orthogroup:
     """
     def __init__(self,orthogroup,sequence):
 
-    """Returns an orthogroup object
-    """
+        #Returns an orthogroup object
         self.orthogroup = orthogroup
         self.sequence = sequence
 
@@ -226,17 +225,19 @@ def gbkParser(gbkFiles,outFileName):
 def OrthofinderRunner(numberOfCores,fastaAminoAcidFolder):
 
     date = datetime.datetime.now()
-    date = date.strftime('%b%d')
+    date = date.strftime('%b%d%H%M')
     
     try:
 
-        return_code = subprocess.check_output(['orthofinder','-f',fastaAminoAcidFolder,'-t',numberOfCores,'-og'],stderr=subprocess.STDOUT)
+        return_code = subprocess.check_output(
+            ['orthofinder','-f',fastaAminoAcidFolder,'-t',numberOfCores,'-og', '-n', date],
+            stderr=subprocess.STDOUT)
     
     except subprocess.CalledProcessError as error:
         
         print('Status : Fail',error.returncode,error.output.strip('\n'))
 
-    orthofinderText = fastaAminoAcidFolder+'/Results_'+date+'/Orthogroups.txt'
+    orthofinderText = fastaAminoAcidFolder+'/OrthoFinder/Results_'+date+'/Orthogroups/Orthogroups.txt'
 
     return(orthofinderText)
 
@@ -305,7 +306,7 @@ def MuscleFileGenerator(multifastaFile):
     
     muscleFile = multifastaFile.split('.')[0]
     
-    return_code = subprocess.check_output(['muscle','-in',multifastaFile,'-out',muscleFile+'.muscle','-seqtype','dna'])
+    return_code = subprocess.check_output(['muscle','-align',multifastaFile,'-output',muscleFile+'.muscle'])
 
     return(muscleFile+'.muscle')
 
