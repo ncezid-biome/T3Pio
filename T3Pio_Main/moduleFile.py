@@ -130,7 +130,6 @@ def primer3Parser(primer3Dict):
     for k in primer3Dict.keys():
         
         primerInfoList = primer3Dict[k]
-        
         try:
 
             totalPrimersReturned = int(primerInfoList[primerInfoList.index('PRIMER_PAIR_NUM_RETURNED') + 1])
@@ -152,7 +151,8 @@ def primer3Parser(primer3Dict):
                     primerPairObjectList.append(primerObj)
                     count += 1
 
-        except ValueError:
+        except ValueError as e:
+            print (f" ******************* caught error:  {str(e)}")
             continue
 
 
@@ -433,10 +433,14 @@ def PrimersearchRunner(trimalFile, primerObjectList):
 
     f.close()
         
+    command = ['primersearch','-seqall',trimalFile,'-infile',primersearchFile+'Primers','-mismatchpercent','6','-outfile',primersearchFile+'.ps']
+    process = subprocess.run(command, capture_output=True, text=True)
+    # primers file might be empty, which would cause primersearch throw out error
+    if process.returncode == 0:
+        return(primersearchFile+'.ps')
+    # return_code = subprocess.check_output(['primersearch','-seqall',trimalFile,'-infile',primersearchFile+'Primers','-mismatchpercent','6','-outfile',primersearchFile+'.ps'])
 
-    return_code = subprocess.check_output(['primersearch','-seqall',trimalFile,'-infile',primersearchFile+'Primers','-mismatchpercent','6','-outfile',primersearchFile+'.ps'])
-
-    return(primersearchFile+'.ps')
+    # return(primersearchFile+'.ps')
 
 
 #########################################################
@@ -496,21 +500,25 @@ def PrimersearchComber(ampliconInfo,primer,sequenceRecordDict):
     for line in ampliconInfo:
         
         if line.startswith('Amplimer'):
-            
-            forwardHit = int(ampliconInfo[ampliconInfo.index(line)+3].split(' ')[5])
-            reverseHit = int((ampliconInfo[ampliconInfo.index(line)+4].split(' ')[5]).replace('[','').replace(']',''))
-            print(ampliconInfo[ampliconInfo.index(line)+1])
-            ampliconLen = int(ampliconInfo[ampliconInfo.index(line)+5].split(' ')[2])
-            sequenceName = str(ampliconInfo[ampliconInfo.index(line)+1].split(' ')[1].strip(' ').strip('\n'))
+            try: 
+                forwardHit = int(ampliconInfo[ampliconInfo.index(line)+3].split(' ')[5])
+                reverseHit = int((ampliconInfo[ampliconInfo.index(line)+4].split(' ')[5]).replace('[','').replace(']',''))
+                print(ampliconInfo[ampliconInfo.index(line)+1])
+                ampliconLen = int(ampliconInfo[ampliconInfo.index(line)+5].split(' ')[2])
+                sequenceName = str(ampliconInfo[ampliconInfo.index(line)+1].split(' ')[1].strip(' ').strip('\n'))
 
-            sequence = str(sequenceRecordDict[sequenceName].seq)
-            sequence = (sequence.replace('-',''))
+                sequence = str(sequenceRecordDict[sequenceName].seq)
+                sequence = (sequence.replace('-',''))
 
-            sequence = sequence[forwardHit+primer.leftLen:ampliconLen-reverseHit-primer.rightLen]
+                sequence = sequence[forwardHit+primer.leftLen:ampliconLen-reverseHit-primer.rightLen]
 
-            primersearchObject = PrimerSearchResults(primer,sequenceName,ampliconLen,forwardHit,reverseHit,sequence)
+                primersearchObject = PrimerSearchResults(primer,sequenceName,ampliconLen,forwardHit,reverseHit,sequence)
 
-            primersearchObjects.append(primersearchObject)
+                primersearchObjects.append(primersearchObject)
+            except IndexError as ie:
+                print (str(ie))
+                continue
+
 
     return(primersearchObjects)
 
@@ -550,7 +558,9 @@ def PrimersearchParser(primersearchFile,numberIsolates,primerObjectList,trimalFi
         validationMark = PrimersearchValidator(ampliconInfo,numberIsolates)
 
         if validationMark == True:
-            
+            # print (f"ampliconInfo is: {ampliconInfo}")
+            # print (f"primer is: {primer}")
+            # print (f"sequenceRecordDict is: {sequenceRecordDict}")
             parsedInfo = PrimersearchComber(ampliconInfo,primer,sequenceRecordDict)
         
             primersearchObjectLists.append(parsedInfo)
@@ -577,16 +587,14 @@ def ParallelFunctions(orthofinderObject,nucleicAcidDict,outfile,primerDesignInfo
     trimalFile = TrimAlFileGenerator(muscleFile)
 
     consambigFile = ConsambigFileGenerator(trimalFile)
-
     primer3Info = RunPrimer3(consambigFile,primerDesignInfo)
-
     primerObjectList = primer3Parser(primer3Info)
-
     checkedPrimerObjectList = PrimerFlankingRegionCheck(primerObjectList)
-
     primersearchFile = PrimersearchRunner(trimalFile,checkedPrimerObjectList)
 
-    primersearchObjectList = PrimersearchParser(primersearchFile,multifasta[1],checkedPrimerObjectList,trimalFile)
+    primersearchObjectList = []
+    if primersearchFile: ### PrimersearchRunner might return None if there the primer is not 'valid', containing no sequences
+        primersearchObjectList = PrimersearchParser(primersearchFile,multifasta[1],checkedPrimerObjectList,trimalFile)
 
     return(primersearchObjectList)
 
