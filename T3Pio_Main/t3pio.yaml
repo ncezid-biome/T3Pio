@@ -1,0 +1,13 @@
+name: t3pio
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python=3.9
+  - pandas
+  - muscle
+  - primer3
+  - trimal
+  - orthofinder
+  - emboss
