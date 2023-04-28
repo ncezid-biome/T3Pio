@@ -50,3 +50,35 @@ It creates **3349** Ortho Groups, and for each, it generates 7 files:
 `OG0001903.trimAl  trimAl output`  
 
 If I run `get_all_primers.py` to extract all the primer candidates it generated', the number count is 31774.  I'm sure there should be some filtering steps to remove a big chunk of these primers. But it's not clear to me what are those steps and how to run them.
+
+**It seems that only around 2000 out of the 2461 primers can be found in this pool of 31774 primer candidates.**
+  
+***
+**Mystery solved:**  
+It turns out we have to use the older version of those dependencies in order to generate the primer pool which includes almost entirely those 2461 primers (or even those in the 7600 MasterPrimerFile), all but one **primer  GATATTCAAATTTGGCAGCCTGG AGATAGATCTGACTGGCGGTC   OG0001700primerGroup1**  
+
+specifically, follow the steps below:  
+1. Orthofinder 2.1.2  
+download the binary file at this link: https://github.com/davidemms/OrthoFinder/tree/2.1.2#results-files  
+And it's also required to install its own dependencies (module load them from scicomp):
+    1. ml MCL-edge/12-068
+    2. ml FastMe/2.1.5
+    3. ml DLCpar/1.0
+    4. ml ncbi-blast+/LATEST
+
+2. TrimAl 1.2  
+can't find where to download Trimal 1.2, so we use Trimal 1.4.1 instead of 1.2, you can create a conda env for this: `conda env create -n t3pio3 -f t3pio3.yaml`  
+
+3. EMOBSS 6.4.0  
+ml EMBOSS/6.4.0
+
+4. Primer3 2.3.4  
+ml primer3/2.3.4
+
+5. MUSCLE 3.6  
+we would use muscle/3.8.31 instead of MUSCLE 3.6.  (latest muscel version is 5.1)
+I can't find where to download MUSCLE 3.6. (scicomp MUSCLE 3.6. doesn't work, missing other dependencies)  
+
+6. once all the required packgaes are installed, run `python3 moduleFile_oldlibrary.py 19 1 boulderFile /scicomp/groups/OID/NCEZID/DFWED/EDLB/projects/T3Pio_Data/gbks/ 19gbks_output1 20`  
+
+**note:** changing the % of isolates inclusion will change the overal size of primer pool. But it seems that we can always find those 2460 primers in the final primer pool.  I tried this with 1 (all 19 isolates included), 0.93 (allowing 1 missing isolate) and 0.89 (allowing 2 missing isolates)  
