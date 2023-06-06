@@ -81,4 +81,9 @@ I can't find where to download MUSCLE 3.6. (scicomp MUSCLE 3.6. doesn't work, mi
 
 6. once all the required packgaes are installed, run `python3 moduleFile_oldlibrary.py 19 1 boulderFile /scicomp/groups/OID/NCEZID/DFWED/EDLB/projects/T3Pio_Data/gbks/ 19gbks_output1 20`  
 
-**note:** changing the % of isolates inclusion will change the overal size of primer pool. But it seems that we can always find those 2460 primers in the final primer pool.  I tried this with 1 (all 19 isolates included), 0.93 (allowing 1 missing isolate) and 0.89 (allowing 2 missing isolates)  
+**note:** changing the % of isolates inclusion will change the overal size of primer pool. But it seems that we can always find those 2460 primers in the final primer pool.  I tried this with 1 (all 19 isolates included), 0.93 (allowing 1 missing isolate) and 0.89 (allowing 2 missing isolates)   
+
+***
+### 6. filter part I  (run_primerscore.py)  
+
+For the first pass filtering, I wrote a `run_primerscore.py` script, which utilizes Sean's `primerScore()` function. It selects one of the primer candidates (normally 10) in each oligo group, with the lowest score. If there is a tie, the first primer with the lowest score will be chosen.  The scripts seems to work well, except in the situation where there is a tie. `run_primerscore.py` always picks the first lowest score primer, but Sean either have additional filtering mechanism or he randomly picks one of the lowest score primers ?
