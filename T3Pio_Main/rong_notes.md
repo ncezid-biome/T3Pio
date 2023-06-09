@@ -86,4 +86,20 @@ I can't find where to download MUSCLE 3.6. (scicomp MUSCLE 3.6. doesn't work, mi
 ***
 ### 6. filter part I  (run_primerscore.py)  
 
-For the first pass filtering, I wrote a `run_primerscore.py` script, which utilizes Sean's `primerScore()` function. It selects one of the primer candidates (normally 10) in each oligo group, with the lowest score. If there is a tie, the first primer with the lowest score will be chosen.  The scripts seems to work well, except in the situation where there is a tie. `run_primerscore.py` always picks the first lowest score primer, but Sean either have additional filtering mechanism or he randomly picks one of the lowest score primers ?
+For the first pass filtering, I wrote a `run_primerscore.py` script, which utilizes Sean's `primerScore()` function. It selects one of the primer candidates (normally 10) in each oligo group, with the lowest score. If there is a tie, the first primer with the lowest score will be chosen.  The scripts seems to work well, except in the situation where there is a tie. `run_primerscore.py` always picks the first lowest score primer, but Sean either have additional filtering mechanism or he randomly picks one of the lowest score primers ?   
+
+***
+### 7. filter part II  (known genomes in Metagenomes and StoolBugs)   
+
+In this step, we first use kraken2  
+
+>  `for f in *.fasta;do kraken2 --db /scicomp/reference-pure/kraken_max $f  --threads 24 --use-names --output "${f%.fasta}.kraken";done`   
+
+to classify all the contigs in those genomes and obtain a list of non-Salmonella contigs; While we run PrimerSearch `(run_primersearch.py)` to obtain the in silico amplicons of our primer candidates with those known genomes. We're then able to filter out `(parse_primersearch.py)` the primers that can amplify with non-Salmonella genomes, based on the list of non-Salmonella contigs and the PrimerSearch result. Below is the steps I tried:  
+1. run `run_primerscore.py` as the first pass filtering and obtained a list of **3349** primers
+2. run 2nd pass filtering as described above and obtained a list of **2822** primers.  
+    - among these **2822** primers, **2235** of them match the **OG** part (Ex: **OG0001700**primerGroup9) of our **2461** primer panel.  
+    - then among those **2235** primers, **1772** of them match completely, including the primer group number  
+
+>  1.  I think if I reverse the filtering order, the result might be different. I didn't do that this time, because primersearch takes a long time (days) if we run it on a large number of primers (in our case, that will be **31774**).  
+>  2.  Again, certainly I can try this and make the result closer to our current **2461** primer panel. But I'm also concerned the **2461** primer panel came out of running the pipeline with older version libraries. If we use all current version libraries, we will certainly get a different primer pool to start with.  
